@@ -1,4 +1,4 @@
-import { smsg } from "./lib/bibliotecas/simple.js"
+import { smsg } from "./lib/simple.js"
 import { format } from "util"
 import { fileURLToPath } from "url"
 import path, { join } from "path"
@@ -308,7 +308,7 @@ async function finalizeHandler(m) {
 
     try {
         if (!opts["noprint"]) {
-            const print = (await import("./lib/bibliotecas/print.js")).default
+            const print = (await import("./lib/print.js")).default
             await print(m, this)
         }
     } catch (e) {
