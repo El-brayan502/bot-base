@@ -19,7 +19,7 @@ let handler = async (m, { conn }) => {
 
   const menus = [
     {
-      image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/8e38a6-1769264516221.jpg',
+      image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/e1f0c2-1769465565901.jpg',
       text: `
 ╭──〔 👑 MENU OWNER 〕
 │
@@ -31,7 +31,7 @@ let handler = async (m, { conn }) => {
       `.trim()
     },
     {
-      image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/d97cf5-1769264470064.jpg',
+      image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/c3043c-1769465597861.jpg',
       text: `
 ╭──〔 ⬇️ MENU DOWNLOADER 〕
 │
