@@ -24,7 +24,7 @@ let handler = async (m, { conn, args }) => {
     await m.react('🕓')
 
     const stickers = await toWebp(buffer) 
-    let dl_url = await addExif(stickers, global.bot, global.dev)
+    let dl_url = await addExif(stickers, global.sticker, global.dev)
     
     await conn.sendFile(m.chat, dl_url, 'sticker.webp', '', m)
     await m.react('✅')
