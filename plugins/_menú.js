@@ -1,3 +1,4 @@
+import axios from 'axios'
 const { generateWAMessageContent, generateWAMessageFromContent, proto } =
   (await import('@whiskeysockets/baileys')).default
 
@@ -20,6 +21,8 @@ let handler = async (m, { conn }) => {
   const menus = [
     {
       image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/e1f0c2-1769465565901.jpg',
+      title: 'MENU OWNER',
+      code: 'MENU-OWNER',
       text: `
 ╭──〔 👑 MENU OWNER 〕
 │
@@ -32,6 +35,8 @@ let handler = async (m, { conn }) => {
     },
     {
       image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/c3043c-1769465597861.jpg',
+      title: 'MENU DOWNLOADER',
+      code: 'MENU-DOWN',
       text: `
 ╭──〔 ⬇️ MENU DOWNLOADER 〕
 │
@@ -60,9 +65,18 @@ let handler = async (m, { conn }) => {
       footer: proto.Message.InteractiveMessage.Footer.fromObject({
         text: '© Yae Miku Bot'
       }),
-      // 🔑 ESTO ES OBLIGATORIO AUNQUE NO USES BOTONES
       nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({
-        buttons: []
+        buttons: [],
+
+        // 🔥 IGUAL AL DEL OWNER
+        messageParamsJson: JSON.stringify({
+          limited_time_offer: {
+            text: `📂 ${menu.title}`,
+            url: 'https://github.com/El-brayan502',
+            copy_code: menu.code,
+            expiration_time: 1754613436864329
+          }
+        })
       })
     })
   }
@@ -74,7 +88,7 @@ let handler = async (m, { conn }) => {
         message: {
           interactiveMessage: proto.Message.InteractiveMessage.fromObject({
             body: proto.Message.InteractiveMessage.Body.fromObject({
-              text: '📂 *MENÚ PRINCIPAL*'
+              text: '📚 *MENÚ POR CATEGORÍAS*'
             }),
             carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({
               cards
