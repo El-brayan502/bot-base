@@ -2,7 +2,7 @@ import axios from 'axios'
 const { generateWAMessageContent, generateWAMessageFromContent, proto } =
   (await import('@whiskeysockets/baileys')).default
 
-let handler = async (m, { conn }) => {
+let handler = async (m, { conn, usedPrefix }) => {
 
   await conn.sendMessage(
     m.chat,
@@ -27,8 +27,8 @@ let handler = async (m, { conn }) => {
 ╭──〔 👑 MENU OWNER 〕
 │
 │ ${usedPrefix}update
-│ #restart
-│ #cleartmp
+│ ${usedPrefix}restart
+│ ${usedPrefix}cleartmp
 │
 ╰──────────────
       `.trim()
@@ -40,9 +40,9 @@ let handler = async (m, { conn }) => {
       text: `
 ╭──〔 ⬇️ MENU DOWNLOADER 〕
 │
-│ #tiktok
-│ #play
-│ #ytmp3
+│ ${usedPrefix}tiktok
+│ ${usedPrefix}play
+│ ${usedPrefix}ytmp3
 │
 ╰──────────────
       `.trim()
@@ -67,7 +67,6 @@ let handler = async (m, { conn }) => {
       }),
       nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({
         buttons: [],
-
         messageParamsJson: JSON.stringify({
           limited_time_offer: {
             text: `📂 ${menu.title}`,
