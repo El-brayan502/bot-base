@@ -19,6 +19,7 @@ let handler = async (m, { conn, usedPrefix }) => {
   }
 
   const menus = [
+    // 👑 OWNER
     {
       image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/e1f0c2-1769465565901.jpg',
       title: 'MENU OWNER',
@@ -33,6 +34,8 @@ let handler = async (m, { conn, usedPrefix }) => {
 ╰──────────────
       `.trim()
     },
+
+    // ⬇️ DOWNLOADER
     {
       image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/c3043c-1769465597861.jpg',
       title: 'MENU DOWNLOADER',
@@ -43,6 +46,26 @@ let handler = async (m, { conn, usedPrefix }) => {
 │ ${usedPrefix}tiktok
 │ ${usedPrefix}play
 │ ${usedPrefix}ytmp3
+│
+╰──────────────
+      `.trim()
+    },
+
+    // 👥 GRUPOS (NUEVA CATEGORÍA)
+    {
+      image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/5b8f0a-1769466200000.jpg',
+      title: 'MENU GRUPOS',
+      code: 'MENU-GROUP',
+      text: `
+╭──〔 👥 MENU GRUPOS 〕
+│
+│ ${usedPrefix}add
+│ ${usedPrefix}kick
+│ ${usedPrefix}promote
+│ ${usedPrefix}demote
+│ ${usedPrefix}linkgc
+│ ${usedPrefix}setdesc
+│ ${usedPrefix}setname
 │
 ╰──────────────
       `.trim()
