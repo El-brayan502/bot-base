@@ -68,7 +68,6 @@ let handler = async (m, { conn }) => {
       nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({
         buttons: [],
 
-        // 🔥 IGUAL AL DEL OWNER
         messageParamsJson: JSON.stringify({
           limited_time_offer: {
             text: `📂 ${menu.title}`,
