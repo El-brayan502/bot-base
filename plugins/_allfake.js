@@ -1,48 +1,47 @@
-import { fs, fetch, axios } from './lib/simple.js' // Ajusta según tu ruta de librerías
+import { watchFile, unwatchFile } from 'fs'
 import moment from 'moment-timezone'
+import { fileURLToPath } from 'url'
 
 /**
- * 🎤 HATSUNE MIKU - SISTEMA GLOBAL DE BRANDING & FAKES
- * Centraliza la identidad visual y las respuestas enriquecidas.
+ * ⚽ NAGI BOT - SISTEMA GLOBAL DE BRANDING & FAKES
+ * Desarrollador: (ㅎㅊDEPOOLㅊㅎ)
  */
 
 let handler = m => m
 handler.all = async function (m, { conn }) {
 
-    // --- CONFIGURACIÓN DE IDENTIDAD ---
-    global.botname = '💙 Ｈａｔｓｕｎｅ Ｍｉｋｕ Ｂｏｔ 💙'
-    global.wm = '🎵◟Hαƚsυɳҽ Mιƙυ◞🎵'
-    global.logo = 'https://i.pinimg.com/736x/30/42/b8/3042b89ced13fefda4e75e3bc6dc2a57.jpg'
-    global.iconorcanal = 'https://i.pinimg.com/736x/7b/0a/62/7b0a6231c519c5c9356d239c5b0f19c1.jpg'
-    global.metanombre = 'MIKU-MD-COMMUNITY'
+    // --- 💠 IDENTIDAD DE NAGI ---
+    global.botname = '🍀 Ｎａｇｉ - Ｂｏｔ 🍀'
+    global.wm = '⚡ Nagi · Seiishiro ⚡'
+    global.logo = 'https://i.pinimg.com/736x/88/22/02/8822026362529806e22c954e7d17462c.jpg' // Cambia por tu logo de Nagi
+    global.iconorcanal = 'https://i.pinimg.com/736x/95/8e/4a/958e4a938c538a08d98d2543e26f53f6.jpg'
+    global.metanombre = 'NAGI-COMMUNITY'
     
-    // --- CONFIGURACIÓN DE CANAL (NEWSLETTER) ---
-    global.idcanal = '120363315369913363@newsletter'
-    global.nombrecanal = '💙 HATSUNE MIKU CHANNEL 💙'
+    // --- 📢 CONFIGURACIÓN DE CANAL ---
+    global.idcanal = '120363315369913363@newsletter' // Tu ID de canal
+    global.nombrecanal = '🍀 NAGI SEIISHIRO UPDATES 🍀'
 
-    // --- EMOJIS GLOBALES ---
-    global.done = '✅'
-    global.error = '❌'
-    global.msm = '📩'
-    global.rwait = '⌛'
-    global.emoji = '🌟'
-    global.emoji2 = '🎵'
-    global.emoji3 = '💖'
+    // --- 💎 EMOJIS & ESTADOS ---
+    global.done = '⚽'
+    global.error = '⚠️'
+    global.msm = '✉️'
+    global.rwait = '⏳'
+    
+    // Emojis de marca
+    global.emoji = '🍀'
+    global.emoji2 = '⚽'
+    global.emoji3 = '⚡'
 
-    // --- SISTEMA DE SALUDOS DINÁMICOS ---
-    const hour = moment.tz('America/Mexico_City').hour() // Ajusta tu zona horaria
-    let saludo = '🌙 ¡Buenas noches!'
-    if (hour >= 5 && hour < 12) saludo = '☀️ ¡Buenos días!'
-    if (hour >= 12 && hour < 18) saludo = '🌤️ ¡Buenas tardes!'
-    global.saludo = saludo
+    // --- 🕒 SALUDO SEGÚN HORA ---
+    const time = moment.tz('America/Mexico_City').hour()
+    global.saludo = time >= 5 && time < 12 ? '☀️ Buenos días' : time >= 12 && time < 18 ? '🌤️ Buenas tardes' : '🌙 Buenas noches'
 
-    // --- MENSAJES DE ESPERA (VISUALES) ---
-    global.espera = '🕸🕒 *Procesando solicitud...* ⚠️'
-    global.esperat = '⌛ *Espere un momento, diva en escena...* 🎤'
-    global.esperatt = '✨ *Cargando datos musicales...* 🎵'
+    // --- 🕸️ MENSAJES DE CARGA (Branding Nagi) ---
+    global.espera = '⏳ *Analizando jugada...* ⚽'
+    global.esperat = '🏟️ *Nagi está entrando al campo...* ✨'
+    global.esperatt = '⚙️ *Cargando genio táctico...* ⚡'
 
-    // --- RESPUESTAS DE CANAL (ADREPLY) ---
-    // Mensaje base para respuestas enriquecidas
+    // --- 🎀 RESPUESTAS CON CANAL (AdReply) ---
     global.rcanal = {
         contextInfo: {
             isForwarded: true,
@@ -54,118 +53,66 @@ handler.all = async function (m, { conn }) {
             externalAdReply: {
                 showAdAttribution: true,
                 title: global.botname,
-                body: 'Diva Virtual del Futuro 🎤',
-                mediaUrl: null,
-                description: null,
+                body: 'Genio del Fútbol Virtual ⚽',
                 previewType: "PHOTO",
                 thumbnailUrl: global.iconorcanal,
-                sourceUrl: 'https://whatsapp.com/channel/0029VajYamSIHphMAl3ABi1o'
+                sourceUrl: 'https://github.com/tu_usuario/nagi-bot'
             }
         }
     }
 
-    // Variaciones de avisos rápidos
+    // Atajos de respuesta
     global.rcanalw = { ...global.rcanal, text: `${global.rwait} ${global.espera}` }
-    global.rcanalr = { ...global.rcanal, text: `${global.done} *¡Acción completada con éxito!*` }
-    global.rcanalx = { ...global.rcanal, text: `${global.error} *Hubo un error en el escenario.*` }
-    global.rcanalden = { ...global.rcanal, text: `🛡️ *Acceso Denegado: Solo Fans VIP (Admins).*` }
-    global.rcanaldev = { ...global.rcanal, text: `💻 *Modo Desarrollador Requerido.*` }
+    global.rcanalr = { ...global.rcanal, text: `${global.done} *¡Jugada completada!*` }
 
-    // --- UTILIDADES ---
-    global.elegirAleatorio = (array) => array[Math.floor(Math.random() * array.length)]
+    // --- 🎭 FAKE MESSAGES (CITADOS) ---
     
-    // Generar peso de documento aleatorio
-    global.tamanoDoc = () => {
-        const sizes = ['100', '500', '900', '1024', '2048']
-        return global.elegirAleatorio(sizes)
-    }
-
-    // --- FUNCIONES DE FAKE MESSAGES (FALSOS) ---
-    
-    /**
-     * Fake Contact
-     */
+    // Fake Contact
     global.fkontak = {
         key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) },
-        message: { 
-            contactMessage: { 
-                displayName: m.pushName || 'Usuario Miku', 
-                vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;${m.pushName || 'User'};;;\nFN:${m.pushName || 'User'}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` 
-            } 
-        }
+        message: { contactMessage: { displayName: m.pushName || 'Player', vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;${m.pushName || 'User'};;;\nFN:${m.pushName || 'User'}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Celular\nEND:VCARD` } }
     }
 
-    /**
-     * Fake Document (Fingir que se envía un PDF/Doc)
-     */
-    global.fdoc = {
-        key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) },
-        message: {
-            documentMessage: {
-                url: 'https://wa.me/',
-                mimetype: 'application/pdf',
-                title: 'CONCIERTO_MIKU.pdf',
-                fileLength: global.tamanoDoc(),
-                pageCount: 100,
-                fileName: 'HATSUNE-MIKU-MD.pdf',
-                thumbnail: await (await fetch(global.logo)).buffer()
-            }
-        }
-    }
-
-    /**
-     * Fake Payment (Fingir un pago realizado)
-     */
+    // Fake Payment (Donación Nagi)
     global.fpay = {
         key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) },
         message: {
             requestPaymentMessage: {
                 currencyCodeIso4217: 'USD',
-                amount1000: 99999,
+                amount1000: 50000,
                 requestFrom: m.sender,
-                noteMessage: { extendedTextMessage: { text: '¡Donación para la Diva! 💙' } },
+                noteMessage: { extendedTextMessage: { text: '🍀 ¡Pago por victoria! 🍀' } },
                 expiryTimestamp: 0,
-                amount: { value: 999, offset: 100, currencyCode: 'USD' }
+                amount: { value: 50, offset: 100, currencyCode: 'USD' }
             }
         }
     }
 
-    /**
-     * Fake Poll (Fingir una encuesta)
-     */
-    global.fpoll = {
+    // Fake Document
+    global.fdoc = {
         key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) },
         message: {
-            pollCreationMessage: {
-                name: "¿Cuál es tu canción favorita de Miku?",
-                options: [{ optionName: "World is Mine" }, { optionName: "Ievan Polkka" }],
-                selectableOptionsCount: 1
+            documentMessage: {
+                title: 'NAGI_TACTICS.pdf',
+                fileLength: 999999999,
+                fileName: 'Estrategias-Nagi.pdf',
+                thumbnailUrl: global.logo
             }
         }
     }
 
-    /**
-     * Fake Audio PTT
-     */
-    global.faudio = {
-        key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) },
-        message: {
-            audioMessage: {
-                mimetype: "audio/ogg; codecs=opus",
-                seconds: 3599,
-                ptt: true
-            }
-        }
-    }
-
-    /**
-     * Inyección aleatoria de un Fake (Para respuestas rápidas)
-     */
+    // Función para obtener fake aleatorio
     global.falsos = () => {
-        const list = [global.fkontak, global.fdoc, global.fpay, global.fpoll, global.faudio]
-        return global.elegirAleatorio(list)
+        const list = [global.fkontak, global.fpay, global.fdoc]
+        return list[Math.floor(Math.random() * list.length)]
     }
-
 }
 
 export default handler
+
+// --- 🔄 AUTO-RELOAD ---
+const file = fileURLToPath(import.meta.url)
+watchFile(file, () => {
+  unwatchFile(file)
+  console.log('✨ Actualizado: _allfeke.js (Nagi Bot Edition)')
+})
