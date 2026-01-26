@@ -13,7 +13,7 @@ let handler = async (m, { conn, args }) => {
   try {
     if (/image|video/g.test(mime) && q.download) {
       if (/video/.test(mime) && (q.msg || q).seconds > 11)
-        return conn.reply(m.chat, '*ⓘ* El video no puede durar más de *10 segundos*', m, rcanalx)
+        return conn.reply(m.chat, '*ⓘ* El video no puede durar más de *10 segundos*', m)
       buffer = await q.download()
     } else if (args[0] && isUrl(args[0])) {
       const res = await fetch(args[0])
@@ -32,7 +32,7 @@ let handler = async (m, { conn, args }) => {
   } catch (e) {
     console.error(e)
     await m.react('✖️')
-    return conn.reply(m.chat, '⚠️ Ocurrió un error al crear el sticker.', m, rcanalr)
+    return conn.reply(m.chat, '⚠️ Ocurrió un error al crear el sticker.', m)
   }
 }
 
