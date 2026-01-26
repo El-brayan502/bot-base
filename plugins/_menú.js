@@ -29,6 +29,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 │ ${usedPrefix}update
 │ ${usedPrefix}restart
 │ ${usedPrefix}cleartmp
+│ ${usedPrefix}detectar
 │
 ╰──────────────
       `.trim()
