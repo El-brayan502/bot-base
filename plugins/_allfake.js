@@ -11,7 +11,7 @@ handler.all = async function (m, { conn }) {
     global.iconorcanal = 'https://i.pinimg.com/736x/95/8e/4a/958e4a938c538a08d98d2543e26f53f6.jpg'
     global.metanombre = 'NAGI-COMMUNITY'
     
-    global.idcanal = '120363315369913363@newsletter' // Tu ID de canal
+    global.idcanal = '120363315369913363@newsletter' 
     global.nombrecanal = '🍀 NAGI SEIISHIRO UPDATES 🍀'
 
     global.done = '⚽'
