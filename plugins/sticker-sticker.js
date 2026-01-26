@@ -19,20 +19,20 @@ let handler = async (m, { conn, args }) => {
       const res = await fetch(args[0])
       buffer = await res.buffer()
     } else {
-      return conn.reply(m.chat,'*[ × ]* Responde a una *imagen o video*.', m, rcanal)
+      return conn.reply(m.chat,'*[ × ]* Responde a una *imagen o video*.', m)
     }
     await m.react('🕓')
 
     const stickers = await toWebp(buffer) 
     let dl_url = await addExif(stickers, global.bot, global.dev)
     
-    await conn.sendFile(m.chat, dl_url, 'sticker.webp', '', m, rcanalr)
+    await conn.sendFile(m.chat, dl_url, 'sticker.webp', '', m)
     await m.react('✅')
     return
   } catch (e) {
     console.error(e)
     await m.react('✖️')
-    return conn.reply(m.chat, '⚠️ Ocurrió un error al crear el sticker.', m, rcanalr)
+    return conn.reply(m.chat, '⚠️ Ocurrió un error al crear el sticker.', m)
   }
 }
 
