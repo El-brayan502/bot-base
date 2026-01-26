@@ -54,9 +54,8 @@ let handler = async (m, { conn, usedPrefix }) => {
       text: `
 ╭──〔 ☃️ MENU GRUPO 〕
 │
-│ ${usedPrefix}tiktok
-│ ${usedPrefix}play
-│ ${usedPrefix}ytmp3
+│ ${usedPrefix}kick
+│ ${usedPrefix}link
 │
 ╰──────────────
       `.trim()
