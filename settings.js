@@ -7,7 +7,8 @@ import moment from 'moment-timezone'
 global.botNumber = '' 
 global.owner = [
   ['573244278232', 'Neji ssj', true],
-  ['50231458537', 'BrayanX330', true]
+  ['50231458537', 'BrayanX330', true],
+  ['573229506110','DuarteXV',true]
 ]
 global.mods = []
 global.prems = []
