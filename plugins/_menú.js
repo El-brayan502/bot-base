@@ -87,7 +87,7 @@ let handler = async (m, { conn }) => {
         message: {
           interactiveMessage: proto.Message.InteractiveMessage.fromObject({
             body: proto.Message.InteractiveMessage.Body.fromObject({
-              text: '📚 *MENÚ POR CATEGORÍAS*'
+              text: '*MENU COMPLETO ✨️*'
             }),
             carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({
               cards
