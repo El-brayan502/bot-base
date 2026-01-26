@@ -7,7 +7,7 @@ handler.all = async function (m, { conn }) {
 
     global.botname = '🍀 Ｎａｇｉ - Ｂｏｔ 🍀'
     global.wm = '⚡ Nagi · Seiishiro ⚡'
-    global.logo = 'https://i.pinimg.com/736x/88/22/02/8822026362529806e22c954e7d17462c.jpg' // Cambia por tu logo de Nagi
+    global.logo = 'https://i.pinimg.com/736x/88/22/02/8822026362529806e22c954e7d17462c.jpg' 
     global.iconorcanal = 'https://i.pinimg.com/736x/95/8e/4a/958e4a938c538a08d98d2543e26f53f6.jpg'
     global.metanombre = 'NAGI-COMMUNITY'
     
@@ -19,7 +19,6 @@ handler.all = async function (m, { conn }) {
     global.msm = '✉️'
     global.rwait = '⏳'
     
-    // Emojis de marca
     global.emoji = '🍀'
     global.emoji2 = '⚽'
     global.emoji3 = '⚡'
