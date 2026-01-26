@@ -19,7 +19,7 @@ let handler = async (m, { conn, args }) => {
       const res = await fetch(args[0])
       buffer = await res.buffer()
     } else {
-      return conn.reply(m.chat,'*[ × ]* Responde a una *imagen o video*.', m, global.fdoc)
+      return conn.reply(m.chat,'*[ × ]* Responde a una *imagen o video*.', m, global.fkontak)
     }
     await m.react('🕓')
 
