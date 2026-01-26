@@ -26,7 +26,7 @@ import { Low, JSONFile } from 'lowdb'
 
 // Baileys & WhatsApp Core 
 import * as ws from 'ws'
-import { makeWASocket, protoType, serialize } from './lib/bibliotecas/simple.js'
+import { makeWASocket, protoType, serialize } from './lib/simple.js'
 import store from './lib/bibliotecas/store.js'
 import pkg from 'google-libphonenumber'
 
