@@ -3,7 +3,7 @@ import path from 'path'
 import fetch from 'node-fetch'
 import fluent from 'fluent-ffmpeg'
 import { fileTypeFromBuffer as fromBuffer } from 'file-type'
-import { addExif } from '../lib/sticker.js'
+import { addExif } from '../lib/bibliotecas/sticker.js'
 
 let handler = async (m, { conn, args }) => {
   let q = m.quoted ? m.quoted : m
