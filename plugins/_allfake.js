@@ -30,64 +30,10 @@ handler.all = async function (m, { conn }) {
     global.esperat = '🏟️ *Nagi está entrando al campo...* ✨'
     global.esperatt = '⚙️ *Cargando genio táctico...* ⚡'
 
-    global.rcanal = {
-        contextInfo: {
-            isForwarded: true,
-            forwardedNewsletterMessageInfo: {
-                newsletterJid: global.idcanal,
-                serverMessageId: 100,
-                newsletterName: global.nombrecanal
-            },
-            externalAdReply: {
-                showAdAttribution: true,
-                title: global.botname,
-                body: 'Genio del Fútbol Virtual ⚽',
-                previewType: "PHOTO",
-                thumbnailUrl: global.iconorcanal,
-                sourceUrl: 'https://github.com/tu_usuario/nagi-bot'
-            }
-        }
-    }
-
-    global.rcanalw = { ...global.rcanal, text: `${global.rwait} ${global.espera}` }
-    global.rcanalr = { ...global.rcanal, text: `${global.done} *¡Jugada completada!*` }
-
     global.fkontak = {
         key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) },
         message: { contactMessage: { displayName: m.pushName || 'Player', vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;${m.pushName || 'User'};;;\nFN:${m.pushName || 'User'}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Celular\nEND:VCARD` } }
     }
-
-    global.fpay = {
-        key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) },
-        message: {
-            requestPaymentMessage: {
-                currencyCodeIso4217: 'USD',
-                amount1000: 50000,
-                requestFrom: m.sender,
-                noteMessage: { extendedTextMessage: { text: '🍀 ¡Pago por victoria! 🍀' } },
-                expiryTimestamp: 0,
-                amount: { value: 50, offset: 100, currencyCode: 'USD' }
-            }
-        }
-    }
-
-    global.fdoc = {
-        key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) },
-        message: {
-            documentMessage: {
-                title: 'NAGI_TACTICS.pdf',
-                fileLength: 999999999,
-                fileName: 'Estrategias-Nagi.pdf',
-                thumbnailUrl: global.logo
-            }
-        }
-    }
-
-    global.falsos = () => {
-        const list = [global.fkontak, global.fpay, global.fdoc]
-        return list[Math.floor(Math.random() * list.length)]
-    }
-}
 
 export default handler
 
