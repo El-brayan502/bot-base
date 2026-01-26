@@ -1,3 +1,4 @@
+
 import axios from 'axios'
 const { generateWAMessageContent, generateWAMessageFromContent, proto } =
   (await import('@whiskeysockets/baileys')).default
@@ -19,7 +20,6 @@ let handler = async (m, { conn, usedPrefix }) => {
   }
 
   const menus = [
-    // 👑 OWNER
     {
       image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/e1f0c2-1769465565901.jpg',
       title: 'MENU OWNER',
@@ -34,8 +34,6 @@ let handler = async (m, { conn, usedPrefix }) => {
 ╰──────────────
       `.trim()
     },
-
-    // ⬇️ DOWNLOADER
     {
       image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/c3043c-1769465597861.jpg',
       title: 'MENU DOWNLOADER',
@@ -50,8 +48,6 @@ let handler = async (m, { conn, usedPrefix }) => {
 ╰──────────────
       `.trim()
     },
-
-    // 👥 GRUPOS (NUEVA CATEGORÍA)
     {
       image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/5b8f0a-1769466200000.jpg',
       title: 'MENU GRUPOS',
@@ -64,8 +60,6 @@ let handler = async (m, { conn, usedPrefix }) => {
 │ ${usedPrefix}promote
 │ ${usedPrefix}demote
 │ ${usedPrefix}linkgc
-│ ${usedPrefix}setdesc
-│ ${usedPrefix}setname
 │
 ╰──────────────
       `.trim()
@@ -89,7 +83,15 @@ let handler = async (m, { conn, usedPrefix }) => {
         text: '© Nagi Bot ND'
       }),
       nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({
-        buttons: [],
+        buttons: [
+          {
+            name: 'single_select',
+            buttonParamsJson: JSON.stringify({
+              title: 'Menu',
+              sections: []
+            })
+          }
+        ],
         messageParamsJson: JSON.stringify({
           limited_time_offer: {
             text: `📂 ${menu.title}`,
@@ -108,9 +110,7 @@ let handler = async (m, { conn, usedPrefix }) => {
       viewOnceMessage: {
         message: {
           interactiveMessage: proto.Message.InteractiveMessage.fromObject({
-            body: proto.Message.InteractiveMessage.Body.fromObject({
-              text: '*MENU COMPLETO ✨️*'
-            }),
+            body: { text: '*MENU COMPLETO ✨️*' },
             carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({
               cards
             })
@@ -121,9 +121,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     { quoted: m }
   )
 
-  await conn.relayMessage(m.chat, msg.message, {
-    messageId: msg.key.id
-  })
+  await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
 }
 
 handler.command = ['menu']
