@@ -63,7 +63,7 @@ let handler = async (m, { conn }) => {
         text: menu.text
       }),
       footer: proto.Message.InteractiveMessage.Footer.fromObject({
-        text: '© Yae Miku Bot'
+        text: '© Nagi Bot ND'
       }),
       nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({
         buttons: [],
