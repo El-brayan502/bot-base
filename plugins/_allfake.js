@@ -23,48 +23,6 @@ handler.all = async function (m, { conn }) {
     const time = moment.tz('America/Mexico_City').hour()
     global.saludo = time >= 5 && time < 12 ? '☀️ Buenos días' : time >= 12 && time < 18 ? '🌤️ Buenas tardes' : '🌙 Buenas noches'
 
-    // --- 🛒 GLOBAL RCANAL CORREGIDO ---
-    let titulo = global.botname
-    let descripcion = 'Genio del Blue Lock ⚽'
-    let canal = 'https://whatsapp.com/channel/0029VajYamSIHphMAl3ABi1o'
-    let imgBuffer = await (await fetch(global.logo)).buffer()
-    let img = global.iconorcanal
-
-    global.rcanal = {
-      // ESTA LLAVE ES LA QUE FALTABA PARA EVITAR EL ERROR 'fromMe'
-      key: { 
-        fromMe: false, 
-        participant: `0@s.whatsapp.net`, 
-        remoteJid: "status@broadcast" 
-      },
-      message: {
-        orderMessage: {
-          orderId: 'FAKE-' + Date.now(),
-          thumbnail: imgBuffer, 
-          itemCount: 3,
-          status: 1,
-          surface: 1,
-          message: descripcion,
-          orderTitle: titulo,
-          token: 'AR6xp67VGD8=',
-          sellerJid: '0@s.whatsapp.net',
-          totalAmount1000: '0',
-          totalCurrencyCode: 'GTQ',
-          contextInfo: {
-            isForwarded: true,
-            externalAdReply: {
-              title: 'Canal oficial',
-              body: 'Apóyanos en el canal 💫',
-              thumbnailUrl: img, 
-              sourceUrl: canal,
-              mediaType: 1,
-              renderLargerThumbnail: true
-            }
-          }
-        }
-      }
-    }
-
     // --- 🎭 FAKE CONTACT ---
     global.fkontak = {
         key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) },
