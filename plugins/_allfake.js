@@ -1,4 +1,3 @@
-
 import { watchFile, unwatchFile } from 'fs'
 import moment from 'moment-timezone'
 import { fileURLToPath } from 'url'
@@ -15,36 +14,24 @@ handler.all = async function (m, { conn }) {
 
     global.idcanal = '120363315369913363@newsletter' 
     global.nombrecanal = '🍀 NAGI SEIISHIRO UPDATES 🍀'
-    global.linkGP = 'https://chat.whatsapp.com/GMl9ZCZ7IAd4s0hh0oEGvYwR' // Tu link de grupo sin basura al final
 
-    // --- 🎯 CONFIGURACIÓN CON BOTÓN "UNIRME AL GRUPO" ---
+    // --- 🎯 CONFIGURACIÓN DE CANAL (ADAPTADO) ---
     global.rcanaldev = {
-        // Al enviar esto, Baileys lo detecta como invitación y pone el botón
-        groupInviteMessage: {
-            groupJid: '120363160031023229@g.us', // Jid del grupo (puedes inventar uno si no lo tienes)
-            inviteCode: 'GMl9ZCZ7IAd4s0hh0oEGvYwR', // El código final de tu link
-            groupName: global.nombrecanal, 
-            caption: null, 
-            jpegThumbnail: await (await fetch(global.iconorcanal)).buffer(),
-            contextInfo: {
-                isForwarded: true,
-                forwardedNewsletterMessageInfo: { 
-                    newsletterJid: global.idcanal,
-                    serverMessageId: 100,
-                    newsletterName: global.nombrecanal 
-                },
-                externalAdReply: {
-                    title: '🎯 Nagi Updates',
-                    body: '¡Únete a nuestra comunidad!',
-                    mediaType: 1,
-                    previewType: 'PHOTO',
-                    thumbnailUrl: global.iconorcanal,
-                    thumbnail: await (await fetch(global.iconorcanal)).buffer(),
-                    sourceUrl: global.linkGP,
-                    renderLargerThumbnail: false
-                }
-            }
+      contextInfo: {
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: { 
+            serverMessageId: 100, 
+        },
+        externalAdReply: {
+          title: '🎯 Nagi Updates',
+          body: 'Desarrollo & Actualizaciones',
+          thumbnailUrl: 'https://chat.whatsapp.com/GMl9ZCZ7IAhhd4s00oEGvYwR?mode=ems_copy_t',
+          thumbnail: await (await fetch(global.iconorcanal)).buffer(),
+          sourceUrl: 'https://chat.whatsapp.com/GMl9ZCZ7IAd4s0hh0oEGvYwR?mode=ems_copy_t',
+          mediaType: 1,
+          renderLargerThumbnail: false
         }
+      }
     }
 
     // --- 💎 EMOJIS & ESTADOS ---
