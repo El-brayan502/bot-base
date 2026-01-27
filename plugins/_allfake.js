@@ -27,10 +27,9 @@ handler.all = async function (m, { conn }) {
         externalAdReply: {
           title: '🎯 Nagi Updates',
           body: 'Desarrollo & Actualizaciones',
-          mediaUrl: null,
-          description: null,
-          previewType: 'PHOTO',
-          thumbnailUrl: global.iconorcanal,
+          thumbnailUrl: 'https://chat.whatsapp.com/GMl9ZCZ7IAd4s00oEGvYwR?mode=ems_copy_t',
+          thumbnail: await (await fetch(global.iconorcanal)).buffer(),
+          sourceUrl: 'https://chat.whatsapp.com/GMl9ZCZ7IAd4s00oEGvYwR?mode=ems_copy_t',
           mediaType: 1,
           renderLargerThumbnail: false
         }
