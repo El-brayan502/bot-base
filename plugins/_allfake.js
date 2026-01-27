@@ -12,22 +12,7 @@ handler.all = async function (m, { conn }) {
   global.idcanal = '120363315369913363@newsletter'
   global.nombrecanal = '🍀 NAGI SEIISHIRO UPDATES 🍀'
 
-  // 🔹 CANAL SIMPLE (el que ya tenías)
-  global.rcanal = {
-    contextInfo: {
-      externalAdReply: {
-        title: '🎯 Nagi Updates',
-        body: 'Desarrollo & Actualizaciones',
-        sourceUrl: 'https://chat.whatsapp.com/GMl9ZCZ7IAd4s0hh0oEGvYwR',
-        thumbnailUrl: 'https://chat.whatsapp.com/GMl9ZCZ7IAd4s0hh0oEGvYwR',
-        mediaType: 1,
-        renderLargerThumbnail: false
-      }
-    }
-  }
-
-  // 🔹 CANAL COMPLETO (IDÉNTICO a sock.sendMessage)
-  global.channel = (m, teks, name, version) => ({
+  global.rcanal = (m, teks, name, version) => ({
     text: teks,
     mentions: [m.sender],
     contextInfo: {
