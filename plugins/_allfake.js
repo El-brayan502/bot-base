@@ -16,7 +16,7 @@ handler.all = async function (m, { conn }) {
     global.nombrecanal = '🍀 NAGI SEIISHIRO UPDATES 🍀'
 
     // --- 🎯 CONFIGURACIÓN DE CANAL (ADAPTADO) ---
-    global.rchannel = {
+    global.rcanal = {
       contextInfo: {
         isForwarded: true,
         forwardedNewsletterMessageInfo: { 
