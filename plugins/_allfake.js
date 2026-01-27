@@ -12,6 +12,7 @@ handler.all = async function (m, { conn }) {
   global.idcanal = '120363315369913363@newsletter'
   global.nombrecanal = '🍀 NAGI SEIISHIRO UPDATES 🍀'
 
+  // 🔥 RCANAL COMPLETO (ANTES channel)
   global.rcanal = (m, teks, name, version) => ({
     text: teks,
     mentions: [m.sender],
@@ -68,3 +69,5 @@ export default handler
 const file = fileURLToPath(import.meta.url)
 watchFile(file, () => {
   unwatchFile(file)
+  console.log('✨ Actualizado: _allfeke.js (Nagi Bot Edition)')
+})
