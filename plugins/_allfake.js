@@ -13,7 +13,7 @@ handler.all = async function (m, { conn }) {
   global.nombrecanal = '🍀 NAGI SEIISHIRO UPDATES 🍀'
 
   // 🔥 RCANAL COMPLETO (ANTES channel)
-  global.rcanal = (m, teks, name, version) => ({
+  global.channel = (m, teks, name, version) => ({
     text: teks,
     mentions: [m.sender],
     contextInfo: {
