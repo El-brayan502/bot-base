@@ -9,7 +9,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     // Enviamos el mensaje usando el objeto global.rcanaldev en el contextInfo
     await conn.sendMessage(m.chat, { 
         text: texto,
-        contextInfo: global.rcanaldev.contextInfo 
+        contextInfo: global.channel.contextInfo 
     }, { quoted: m })
 
 }
