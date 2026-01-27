@@ -6,8 +6,6 @@ import fetch from 'node-fetch'
 let handler = m => m
 handler.all = async function (m, { conn }) {
 
-    global.botname = '🍀 Ｎａｇｉ - Ｂｏｔ 🍀'
-    global.wm = '⚡ Nagi · Seiishiro ⚡'
     global.logo = 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/e97fef-1769474597244.jpg' 
     global.iconorcanal = 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/e97fef-1769474597244.jpg'
 
@@ -25,9 +23,9 @@ handler.all = async function (m, { conn }) {
         externalAdReply: {
           title: '🎯 Nagi Updates',
           body: 'Desarrollo & Actualizaciones',
-          thumbnailUrl: 'https://chat.whatsapp.com/GMl9ZCZ7IAhhd4s00oEGvYwR?mode=ems_copy_t',
+          thumbnailUrl: 'https://chat.whatsapp.com/KAhwtBdTOYlFsbsU8rwo79',
           thumbnail: await (await fetch(global.iconorcanal)).buffer(),
-          sourceUrl: 'https://chat.whatsapp.com/GMl9ZCZ7IAd4s0hh0oEGvYwR?mode=ems_copy_t',
+          sourceUrl: 'https://chat.whatsapp.com/KAhwtBdTOYlFsbsU8rwo79',
           mediaType: 1,
           renderLargerThumbnail: false
         }
