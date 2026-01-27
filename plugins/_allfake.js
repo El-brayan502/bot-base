@@ -13,19 +13,30 @@ handler.all = async function (m, { conn }) {
     global.nombrecanal = '🍀 NAGI SEIISHIRO UPDATES 🍀'
 
 global.rcanal = {
+    text: teks,
+    mentions: [m.sender],
   contextInfo: {
-    externalAdReply: {
-      title: '🎯 Nagi Updates',
-      body: 'Version • Desarrollo & Actualizaciones',
-      thumbnailUrl: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/f0ce07-1768894711861.jpg',
-      renderLargerThumbnail: false,
-      mediaType: 2,
-      mediaUrl: 'https://chat.whatsapp.com/GMl9ZCZ7IAd4s0hh0oEGvYwR',
-      previewType: 1,
-      sourceUrl: 'https://chat.whatsapp.com/GMl9ZCZ7IAd4s0hh0oEGvYwR'
+    mentionedJid: [m.sender],
+      externalAdReply: {
+        title: `xd`,
+        body: `Version • xd`,
+        thumbnailUrl: "https://",
+        renderLargerThumbnail: false,
+        mediaType: 2,
+        mediaUrl: "https://chat.whatsapp.com/H9fhGRyvrwu8rv4WTTpR0U",
+        previewType: 1,
+        sourceUrl: ""
     }
   }
 }
+
+sock.sendMessage(m.chat, {
+    
+    contextInfo: {
+      
+      }
+    }
+  }, { quoted: fakeQuoted })
 
     global.done = '⚽'
     global.error = '⚠️'
