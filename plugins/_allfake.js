@@ -20,7 +20,7 @@ handler.all = async function (m, { conn }) {
       contextInfo: {
         isForwarded: true,
         forwardedNewsletterMessageInfo: { 
-            newsletterJid: global.idcanal, 
+            newsletterName: global.nombrecanal 
             serverMessageId: 100, 
         },
         externalAdReply: {
