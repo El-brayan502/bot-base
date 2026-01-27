@@ -23,9 +23,8 @@ handler.all = async function (m, { conn }) {
         externalAdReply: {
           title: '🎯 Nagi Updates',
           body: 'Desarrollo & Actualizaciones',
-          thumbnailUrl: 'https://chat.whatsapp.com/KAhwtBdTOYlFsbsU8rwo79',
-          thumbnail: await (await fetch(global.iconorcanal)).buffer(),
-          sourceUrl: 'https://chat.whatsapp.com/KAhwtBdTOYlFsbsU8rwo79',
+          sourceUrl: 'https://chat.whatsapp.com/GMl9ZCZ7IAd4s0hh0oEGvYwR', 
+          mediaUrl: 'https://chat.whatsapp.com/GMl9ZCZ7IAd4s0hh0oEGvYwR',
           mediaType: 1,
           renderLargerThumbnail: false
         }
