@@ -33,14 +33,14 @@ handler.all = async function (m, { conn }) {
     contextInfo: {
       mentionedJid: [m.sender],
       externalAdReply: {
-        title: `xd`,
+        title: `${name}`,
         body: `Version • ${version}`,
         thumbnailUrl: global.iconorcanal,
         renderLargerThumbnail: false,
         mediaType: 2,
         mediaUrl: 'https://chat.whatsapp.com/H9fhGRyvrwu8rv4WTTpR0U',
         previewType: 1,
-        sourceUrl: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/e97fef-1769474597244.jpg'
+        sourceUrl: ''
       }
     }
   })
