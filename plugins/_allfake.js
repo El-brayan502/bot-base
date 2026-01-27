@@ -17,7 +17,8 @@ handler.all = async function (m, { conn }) {
     global.linkGP = 'https://chat.whatsapp.com/GMl9ZCZ7IAd4s0hh0oEGvYwR'
 
     // --- 🎯 CONFIGURACIÓN EXTERNAL AD REPLY (BOTÓN DE GRUPO) ---
-    global.rcanal = {
+    global.rcanaldev = {
+      contextInfo: {
         externalAdReply: {
           title: global.botname,
           body: `Version • ${global.version}`,
