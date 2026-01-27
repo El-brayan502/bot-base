@@ -18,7 +18,6 @@ handler.all = async function (m, { conn }) {
 
     // --- 🎯 CONFIGURACIÓN EXTERNAL AD REPLY (BOTÓN DE GRUPO) ---
     global.rcanal = {
-        },
         externalAdReply: {
           title: global.botname,
           body: `Version • ${global.version}`,
