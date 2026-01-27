@@ -33,7 +33,7 @@ handler.all = async function (m, { conn }) {
     contextInfo: {
       mentionedJid: [m.sender],
       externalAdReply: {
-        title: `${name}`,
+        title: `xd`,
         body: `Version • ${version}`,
         thumbnailUrl: global.iconorcanal,
         renderLargerThumbnail: false,
