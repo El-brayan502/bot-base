@@ -1,30 +1,23 @@
 /**
- * ⚽ NAGI BOT - COMANDO DE CANAL
- * Usa el global.rcanal definido en _allfeke.js
+ * ⚽ NAGI BOT - COMANDO DE PRUEBA RCANAL
+ * Este comando usa el global.rcanal configurado en _allfeke.js
  */
 
-let handler = async (m, { conn }) => {
+let handler = async (m, { conn, usedPrefix, command }) => {
 
-    let mensaje = `🍀 *¡Únete a nuestra comunidad!*
+    let mensaje = `⚽ *¡PRUEBA DE JUGADA!* ⚽\n\nEste mensaje está siendo enviado utilizando el estilo de *Order Message* que configuramos para el canal oficial.`
 
-Sigue el canal oficial de *${global.botname}* para recibir las últimas actualizaciones, nuevas funciones y jugadas maestras.
-
-🏟️ *Link del Canal:*
-https://whatsapp.com/channel/0029VajYamSIHphMAl3ABi1o
-
-> ⚡ _"Analizando el campo... la victoria es nuestra."_`
-
-    // Usamos conn.sendMessage para enviar el texto y citar el rcanal
+    // Enviamos el mensaje y le pasamos el rcanal en la propiedad 'quoted'
     await conn.sendMessage(m.chat, { 
         text: mensaje 
     }, { 
-        quoted: global.rcanal // <--- Aquí usamos el rcanal de tu config
+        quoted: global.rcanal 
     })
 
 }
 
-handler.help = ['canal', 'channel']
+handler.help = ['testrcanal']
 handler.tags = ['main']
-handler.command = ['canal', 'channel', 'comunidad']
+handler.command = ['testrcanal', 'probarcanal', 'nagitest']
 
 export default handler
