@@ -23,8 +23,6 @@ handler.all = async function (m, { conn }) {
             newsletterJid: global.idcanal, 
             serverMessageId: 100, 
             newsletterName: global.nombrecanal 
-        forwardedNewsletterMessageInfo: { 
-            serverMessageId: 100, 
         },
         externalAdReply: {
           title: '🎯 Nagi Updates',
