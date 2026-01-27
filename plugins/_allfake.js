@@ -11,9 +11,31 @@ handler.all = async function (m, { conn }) {
     global.wm = '⚡ Nagi · Seiishiro ⚡'
     global.logo = 'https://i.pinimg.com/736x/88/22/02/8822026362529806e22c954e7d17462c.jpg' 
     global.iconorcanal = 'https://i.pinimg.com/736x/95/8e/4a/958e4a938c538a08d98d2543e26f53f6.jpg'
-    
+
     global.idcanal = '120363315369913363@newsletter' 
     global.nombrecanal = '🍀 NAGI SEIISHIRO UPDATES 🍀'
+
+    // --- 🎯 CONFIGURACIÓN DE CANAL (ADAPTADO) ---
+    global.rcanaldev = {
+      contextInfo: {
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: { 
+            newsletterJid: global.idcanal, 
+            serverMessageId: 100, 
+            newsletterName: global.nombrecanal 
+        },
+        externalAdReply: {
+          title: '🎯 Nagi Updates',
+          body: 'Desarrollo & Actualizaciones',
+          mediaUrl: null,
+          description: null,
+          previewType: 'PHOTO',
+          thumbnailUrl: global.iconorcanal,
+          mediaType: 1,
+          renderLargerThumbnail: false
+        }
+      }
+    }
 
     // --- 💎 EMOJIS & ESTADOS ---
     global.done = '⚽'
