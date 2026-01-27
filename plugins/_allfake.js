@@ -18,12 +18,6 @@ handler.all = async function (m, { conn }) {
 
     // --- 🎯 CONFIGURACIÓN EXTERNAL AD REPLY (BOTÓN DE GRUPO) ---
     global.rcanal = {
-      contextInfo: {
-        isForwarded: true,
-        forwardedNewsletterMessageInfo: { 
-            newsletterJid: global.idcanal, 
-            serverMessageId: 100, 
-            newsletterName: global.nombrecanal 
         },
         externalAdReply: {
           title: global.botname,
