@@ -14,7 +14,7 @@ handler.all = async function (m, { conn }) {
     global.idcanal = '120363315369913363@newsletter' 
     global.nombrecanal = '🍀 NAGI SEIISHIRO UPDATES 🍀'
 
-    global.rchannel = {
+    global.rcanal = {
       contextInfo: {
         isForwarded: true,
         forwardedNewsletterMessageInfo: { 
