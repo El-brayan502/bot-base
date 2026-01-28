@@ -23,7 +23,8 @@ handler.all = async function (m, { conn }) {
       externalAdReply: {
         title: '🎯 Nagi Updates',
         body: 'Desarrollo & Actualizaciones',
-        sourceUrl: 'https://chat.whatsapp.com/GMl9ZCZ7IAd4s0hh0oEGvYwR',
+        mediaType: 2,
+        sourceUrl: ""
         thumbnail: await (await fetch(global.iconorcanal)).buffer(),
         thumbnailUrl: "https://",
         mediaType: 1,
