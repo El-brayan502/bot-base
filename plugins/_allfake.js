@@ -28,6 +28,7 @@ handler.all = async function (m, { conn }) {
         thumbnail: await (await fetch(global.iconorcanal)).buffer(),
         thumbnailUrl: "https://",
         mediaType: 1,
+        mediaUrl: "https://chat.whatsapp.com/H9fhGRyvrwu8rv4WTTpR0U",
         renderLargerThumbnail: false
       }
     }
