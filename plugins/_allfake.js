@@ -66,4 +66,4 @@ export default handler
 
 const file = fileURLToPath(import.meta.url)
 watchFile(file, () => {
-  unwatchFile(file)
+unwatchFile(file)
