@@ -25,7 +25,6 @@ handler.all = async function (m, { conn }) {
         body: 'Desarrollo & Actualizaciones',
         mediaType: 2,
         sourceUrl: ""
-        thumbnail: await (await fetch(global.iconorcanal)).buffer(),
         thumbnailUrl: "https://",
         mediaType: 1,
         mediaUrl: "https://chat.whatsapp.com/H9fhGRyvrwu8rv4WTTpR0U",
