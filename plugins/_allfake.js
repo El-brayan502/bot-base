@@ -18,7 +18,6 @@ handler.all = async function (m, { conn }) {
         title: `Nagi - Seiishiro`,
         body: `Version • 1.0.2`,
         thumbnail: await (await fetch(global.iconorcanal)).buffer(),
-        thumbnailUrl: global.iconorcanal,
         renderLargerThumbnail: true, // <--- Esto hace que se vea grande como en tu foto
         mediaType: 2, // <--- Esto habilita el botón "Unirme al grupo"
         mediaUrl: "https://chat.whatsapp.com/KAhwtBdTOYlFsbsU8rwo79",
