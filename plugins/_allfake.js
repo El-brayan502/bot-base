@@ -14,12 +14,6 @@ handler.all = async function (m, { conn }) {
   // 🔹 CONFIGURACIÓN ESTILO VYNAA VALERIE
   global.rcanaldev = {
     contextInfo: {
-      isForwarded: true,
-      forwardedNewsletterMessageInfo: { 
-        newsletterJid: global.idcanal, 
-        serverMessageId: 100, 
-        newsletterName: global.nombrecanal 
-      },
       externalAdReply: {
         title: `Nagi - Seiishiro`,
         body: `Version • 1.0.2`,
