@@ -8,62 +8,35 @@ handler.all = async function (m, { conn }) {
 
   global.logo = 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/e97fef-1769474597244.jpg'
   global.iconorcanal = 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/e97fef-1769474597244.jpg'
-
   global.idcanal = '120363315369913363@newsletter'
   global.nombrecanal = '🍀 NAGI SEIISHIRO UPDATES 🍀'
 
-  // 🔹 CANAL SIMPLE (el que ya tenías)
+  // 🔹 CONFIGURACIÓN ESTILO VYNAA VALERIE
   global.rcanaldev = {
-      contextInfo: {
-        externalAdReply: {
-        title: `lolBit`,
-        body: `Version • 1.08`,
+    contextInfo: {
+      isForwarded: true,
+      forwardedNewsletterMessageInfo: { 
+        newsletterJid: global.idcanal, 
+        serverMessageId: 100, 
+        newsletterName: global.nombrecanal 
+      },
+      externalAdReply: {
+        title: `Nagi - Seiishiro`,
+        body: `Version • 1.0.2`,
         thumbnail: await (await fetch(global.iconorcanal)).buffer(),
-        thumbnailUrl: "https://",
-        renderLargerThumbnail: false,
-        mediaType: 2,
+        thumbnailUrl: global.iconorcanal,
+        renderLargerThumbnail: true, // <--- Esto hace que se vea grande como en tu foto
+        mediaType: 2, // <--- Esto habilita el botón "Unirme al grupo"
         mediaUrl: "https://chat.whatsapp.com/KAhwtBdTOYlFsbsU8rwo79",
-        previewType: 1,
-        sourceUrl: ""
-        }
-      }
-    }
-
-  global.done = '⚽'
-  global.error = '⚠️'
-  global.rwait = '⏳'
-
-  const time = moment.tz('America/Mexico_City').hour()
-  global.saludo =
-    time >= 5 && time < 12
-      ? '☀️ Buenos días'
-      : time >= 12 && time < 18
-      ? '🌤️ Buenas tardes'
-      : '🌙 Buenas noches'
-
-  global.fkontak = {
-    key: {
-      fromMe: false,
-      participant: `0@s.whatsapp.net`,
-      ...(m.chat ? { remoteJid: 'status@broadcast' } : {})
-    },
-    message: {
-      contactMessage: {
-        displayName: m.pushName || 'Player',
-        vcard: `BEGIN:VCARD
-VERSION:3.0
-N:;${m.pushName || 'User'};;;
-FN:${m.pushName || 'User'}
-item1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}
-item1.X-ABLabel:Celular
-END:VCARD`
+        previewType: 'PHOTO',
+        sourceUrl: "https://chat.whatsapp.com/KAhwtBdTOYlFsbsU8rwo79"
       }
     }
   }
+
+  // --- Otros globales ---
+  global.done = '⚽'; global.error = '⚠️'; global.rwait = '⏳'
 }
 
 export default handler
-
-const file = fileURLToPath(import.meta.url)
-watchFile(file, () => {
-unwatchFile(file)
+// ... resto del código del watchFile
