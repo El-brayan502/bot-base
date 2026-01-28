@@ -18,7 +18,7 @@ handler.all = async function (m, { conn }) {
     let imgBuffer = await (await fetch(global.iconorcanal)).buffer().catch(_ => null)
 
     // --- 🎯 CONFIGURACIÓN ESTILO VYNAA VALERIE ---
-    global.rcanal = {
+    global.rcanaldev = {
     contextInfo: {
       externalAdReply: {
         title: '🎯 Nagi Updates',
