@@ -18,6 +18,7 @@ handler.all = async function (m, { conn }) {
         externalAdReply: {
         title: `lolBit`,
         body: `Version • 1.08`,
+        thumbnail: await (await fetch(global.iconorcanal)).buffer(),
         thumbnailUrl: global.logo,
         renderLargerThumbnail: false,
         mediaType: 2,
