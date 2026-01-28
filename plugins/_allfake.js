@@ -29,25 +29,6 @@ handler.all = async function (m, { conn }) {
       }
     }
 
-  // 🔹 CANAL COMPLETO (IDÉNTICO a sock.sendMessage)
-  global.channel = (m, teks, name, version) => ({
-    text: teks,
-    mentions: [m.sender],
-    contextInfo: {
-      mentionedJid: [m.sender],
-      externalAdReply: {
-        title: `${name}`,
-        body: `Version • ${version}`,
-        thumbnailUrl: global.iconorcanal,
-        renderLargerThumbnail: false,
-        mediaType: 2,
-        mediaUrl: 'https://chat.whatsapp.com/H9fhGRyvrwu8rv4WTTpR0U',
-        previewType: 1,
-        sourceUrl: ''
-      }
-    }
-  })
-
   global.done = '⚽'
   global.error = '⚠️'
   global.rwait = '⏳'
