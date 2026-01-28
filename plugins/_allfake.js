@@ -19,7 +19,7 @@ handler.all = async function (m, { conn }) {
         title: `lolBit`,
         body: `Version • 1.08`,
         thumbnail: await (await fetch(global.iconorcanal)).buffer(),
-        thumbnailUrl: global.logo,
+        thumbnailUrl: "https://",
         renderLargerThumbnail: false,
         mediaType: 2,
         mediaUrl: "https://chat.whatsapp.com/KAhwtBdTOYlFsbsU8rwo79",
