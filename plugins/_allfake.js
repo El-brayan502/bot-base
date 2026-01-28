@@ -11,21 +11,19 @@ handler.all = async function (m, { conn }) {
   global.idcanal = '120363315369913363@newsletter'
   global.nombrecanal = '🍀 NAGI SEIISHIRO UPDATES 🍀'
 
- // 🔹 CONFIGURACIÓN ESTILO PROFESIONAL (BOTÓN + MINIATURA GRANDE)
+ // 🔹 CONFIGURACIÓN ESTILO PROFESIONAL (MINIATURA + BOTÓN)
   global.rcanaldev = {
     contextInfo: {
-      // Re-agregamos esto pero de forma simplificada para soporte visual
-      isForwarded: true,
+      isForwarded: true, // Ayuda al renderizado interactivo
       externalAdReply: {
         title: `Nagi - Seiishiro`,
         body: `Version • 1.0.2`,
-        // Usamos tanto 'thumbnail' como 'thumbnailUrl' para asegurar carga
-        thumbnail: await (await fetch(global.iconorcanal)).buffer(),
+        // Es vital enviar el buffer procesado aquí
+        thumbnail: await (await fetch(global.iconorcanal)).buffer(), 
         thumbnailUrl: global.iconorcanal, 
-        renderLargerThumbnail: true, // Crucial para el tamaño grande
-        mediaType: 2, 
+        renderLargerThumbnail: true, // Cámbialo a false si quieres la miniatura pequeña a la izquierda
+        mediaType: 1, // Cambiado de 2 a 1 para mejor estabilidad de miniatura
         mediaUrl: "https://chat.whatsapp.com/KAhwtBdTOYlFsbsU8rwo79",
-        previewType: 'PHOTO',
         sourceUrl: "https://chat.whatsapp.com/KAhwtBdTOYlFsbsU8rwo79"
       }
     }
