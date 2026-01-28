@@ -11,15 +11,19 @@ handler.all = async function (m, { conn }) {
   global.idcanal = '120363315369913363@newsletter'
   global.nombrecanal = '🍀 NAGI SEIISHIRO UPDATES 🍀'
 
-  // 🔹 CONFIGURACIÓN ESTILO VYNAA VALERIE
+ // 🔹 CONFIGURACIÓN ESTILO PROFESIONAL (BOTÓN + MINIATURA GRANDE)
   global.rcanaldev = {
     contextInfo: {
+      // Re-agregamos esto pero de forma simplificada para soporte visual
+      isForwarded: true,
       externalAdReply: {
         title: `Nagi - Seiishiro`,
         body: `Version • 1.0.2`,
+        // Usamos tanto 'thumbnail' como 'thumbnailUrl' para asegurar carga
         thumbnail: await (await fetch(global.iconorcanal)).buffer(),
-        renderLargerThumbnail: true, // <--- Esto hace que se vea grande como en tu foto
-        mediaType: 2, // <--- Esto habilita el botón "Unirme al grupo"
+        thumbnailUrl: global.iconorcanal, 
+        renderLargerThumbnail: true, // Crucial para el tamaño grande
+        mediaType: 2, 
         mediaUrl: "https://chat.whatsapp.com/KAhwtBdTOYlFsbsU8rwo79",
         previewType: 'PHOTO',
         sourceUrl: "https://chat.whatsapp.com/KAhwtBdTOYlFsbsU8rwo79"
