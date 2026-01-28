@@ -14,17 +14,19 @@ handler.all = async function (m, { conn }) {
 
   // 🔹 CANAL SIMPLE (el que ya tenías)
   global.rcanal = {
-    contextInfo: {
-      externalAdReply: {
-        title: '🎯 Nagi Updates',
-        body: 'Desarrollo & Actualizaciones',
-        sourceUrl: 'https://chat.whatsapp.com/GMl9ZCZ7IAd4s0hh0oEGvYwR',
-        thumbnailUrl: 'https://chat.whatsapp.com/GMl9ZCZ7IAd4s0hh0oEGvYwR',
-        mediaType: 1,
-        renderLargerThumbnail: false
+      contextInfo: {
+        externalAdReply: {
+        title: `lolBit`,
+        body: `Version • 1.08`,
+        thumbnailUrl: "https://",
+        renderLargerThumbnail: false,
+        mediaType: 2,
+        mediaUrl: "https://chat.whatsapp.com/KAhwtBdTOYlFsbsU8rwo79",
+        previewType: 1,
+        sourceUrl: ""
+        }
       }
     }
-  }
 
   // 🔹 CANAL COMPLETO (IDÉNTICO a sock.sendMessage)
   global.channel = (m, teks, name, version) => ({
