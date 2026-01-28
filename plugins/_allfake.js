@@ -83,5 +83,3 @@ export default handler
 const file = fileURLToPath(import.meta.url)
 watchFile(file, () => {
   unwatchFile(file)
-  console.log('✨ Actualizado: _allfeke.js (Nagi Bot Edition)')
-})
