@@ -6,28 +6,58 @@ import fetch from 'node-fetch'
 let handler = m => m
 handler.all = async function (m, { conn }) {
 
-  global.logo = 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/e97fef-1769474597244.jpg'
-  global.iconorcanal = 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/e97fef-1769474597244.jpg'
-  global.idcanal = '120363315369913363@newsletter'
-  global.nombrecanal = '🍀 NAGI SEIISHIRO UPDATES 🍀'
+    // --- 💠 IDENTIDAD ---
+    global.logo = 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/e97fef-1769474597244.jpg'
+    global.iconorcanal = 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/e97fef-1769474597244.jpg'
+    global.idcanal = '120363315369913363@newsletter'
+    global.nombrecanal = '🍀 NAGI SEIISHIRO UPDATES 🍀'
+    const canalLink = "https://chat.whatsapp.com/KAhwtBdTOYlFsbsU8rwo79"
 
-// 🔹 CONFIGURACIÓN ESTILO "VYNAA" (CATÁLOGO + BOTÓN DE GRUPO)
-      contextInfo: {
-        externalAdReply: {
-          title: `🍀 NAGI UPDATES 🍀`,
-          body: `© Vynaa Valerie`,
-          thumbnailUrl: global.iconorcanal,
-          mediaType: 1,
-          renderLargerThumbnail: true,
-          sourceUrl: "https://chat.whatsapp.com/KAhwtBdTOYlFsbsU8rwo79"
+    // --- 🛠️ CORRECCIÓN DE MINIATURA (BUFFER) ---
+    // Descargamos la imagen para que WhatsApp no la ignore
+    let imgBuffer = await (await fetch(global.iconorcanal)).buffer().catch(_ => null)
+
+    // --- 🎯 CONFIGURACIÓN ESTILO VYNAA VALERIE ---
+    global.rcanaldev = {
+        contextInfo: {
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: { 
+                newsletterJid: global.idcanal, 
+                serverMessageId: 100, 
+                newsletterName: global.nombrecanal 
+            },
+            externalAdReply: {
+                title: `🍀 NAGI UPDATES 🍀`,
+                body: `© Vynaa Valerie`,
+                thumbnail: imgBuffer, // Buffer real para forzar la miniatura
+                thumbnailUrl: global.iconorcanal,
+                renderLargerThumbnail: true, // Imagen grande como en tu captura
+                mediaType: 2, // Tipo 2 para habilitar el botón "Join group"
+                mediaUrl: canalLink,
+                sourceUrl: canalLink,
+                previewType: 'PHOTO'
+            }
         }
-      }
     }
-  }
 
-  // --- Otros globales ---
-  global.done = '⚽'; global.error = '⚠️'; global.rwait = '⏳'
+    // --- 💎 OTROS GLOBALES ---
+    global.done = '⚽'
+    global.error = '⚠️'
+    global.rwait = '⏳'
+
+    const time = moment.tz('America/Mexico_City').hour()
+    global.saludo = time >= 5 && time < 12 ? '☀️ Buenos días' : time >= 12 && time < 18 ? '🌤️ Buenas tardes' : '🌙 Buenas noches'
+
+    global.fkontak = {
+        key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: 'status@broadcast' } : {}) },
+        message: { contactMessage: { displayName: m.pushName || 'Player', vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;${m.pushName || 'User'};;;\nFN:${m.pushName || 'User'}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Celular\nEND:VCARD` } }
+    }
 }
 
 export default handler
-// ... resto del código del watchFile
+
+const file = fileURLToPath(import.meta.url)
+watchFile(file, () => {
+    unwatchFile(file)
+    console.log('✨ Actualizado: _allfeke.js (Nagi Style)')
+})
