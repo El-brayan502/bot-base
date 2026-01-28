@@ -13,7 +13,7 @@ handler.all = async function (m, { conn }) {
   global.nombrecanal = '🍀 NAGI SEIISHIRO UPDATES 🍀'
 
   // 🔹 CANAL SIMPLE (el que ya tenías)
-  global.rcanal = {
+  global.rcanaldev = {
       contextInfo: {
         externalAdReply: {
         title: `lolBit`,
