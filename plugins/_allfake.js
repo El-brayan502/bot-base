@@ -18,27 +18,18 @@ handler.all = async function (m, { conn }) {
     let imgBuffer = await (await fetch(global.iconorcanal)).buffer().catch(_ => null)
 
     // --- 🎯 CONFIGURACIÓN ESTILO VYNAA VALERIE ---
-    global.rcanaldev = {
-        contextInfo: {
-            isForwarded: true,
-            forwardedNewsletterMessageInfo: { 
-                newsletterJid: global.idcanal, 
-                serverMessageId: 100, 
-                newsletterName: global.nombrecanal 
-            },
-            externalAdReply: {
-                title: `🍀 NAGI UPDATES 🍀`,
-                body: `© Vynaa Valerie`,
-                thumbnail: imgBuffer, // Buffer real para forzar la miniatura
-                thumbnailUrl: global.iconorcanal,
-                renderLargerThumbnail: true, // Imagen grande como en tu captura
-                mediaType: 2, // Tipo 2 para habilitar el botón "Join group"
-                mediaUrl: canalLink,
-                sourceUrl: canalLink,
-                previewType: 'PHOTO'
-            }
-        }
+    global.rcanal = {
+    contextInfo: {
+      externalAdReply: {
+        title: '🎯 Nagi Updates',
+        body: 'Desarrollo & Actualizaciones',
+        sourceUrl: 'https://chat.whatsapp.com/GMl9ZCZ7IAd4s0hh0oEGvYwR',
+        thumbnailUrl: 'https://chat.whatsapp.com/GMl9ZCZ7IAd4s0hh0oEGvYwR',
+        mediaType: 1,
+        renderLargerThumbnail: false
+      }
     }
+  }
 
     // --- 💎 OTROS GLOBALES ---
     global.done = '⚽'
