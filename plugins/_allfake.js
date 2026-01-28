@@ -12,26 +12,7 @@ handler.all = async function (m, { conn }) {
   global.nombrecanal = '🍀 NAGI SEIISHIRO UPDATES 🍀'
 
 // 🔹 CONFIGURACIÓN ESTILO "VYNAA" (CATÁLOGO + BOTÓN DE GRUPO)
-  global.rcanaldev = {
-    productMessage: {
-      product: {
-        productImage: { url: global.iconorcanal }, // Imagen del producto
-        productId: "69474597244",
-        title: "Nagi - Seiishiro",
-        description: "Version • 1.0.2",
-        currencyCode: "USD",
-        priceAmount1000: "99990", // Esto pone el $99.99 que viste
-        retailerId: "NagiBot",
-        url: "https://chat.whatsapp.com/KAhwtBdTOYlFsbsU8rwo79" 
-      },
-      businessOwnerJid: "0@s.whatsapp.net",
       contextInfo: {
-        isForwarded: true,
-        forwardedNewsletterMessageInfo: { 
-            newsletterJid: global.idcanal, 
-            serverMessageId: 100, 
-            newsletterName: global.nombrecanal 
-        },
         externalAdReply: {
           title: `🍀 NAGI UPDATES 🍀`,
           body: `© Vynaa Valerie`,
