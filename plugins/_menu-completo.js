@@ -34,7 +34,7 @@ let handler = async (m, { conn, usedPrefix }) => {
       `.trim()
     },
     {
-      image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/c3043c-1769465597861.jpg',
+      image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/143190-1769744489959.jpg',
       title: 'MENU MAKER',
       code: 'MENU-MKR',
       text: `
