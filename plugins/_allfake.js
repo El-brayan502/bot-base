@@ -22,7 +22,7 @@ handler.all = async function (m, { conn }) {
         forwardedNewsletterMessageInfo: { newsletterJid: idcanal, serverMessageId: 100, newsletterName: nombrecanal },
         externalAdReply: {
           title: '🎯 Nagi Updates',
-          thumbnailUrl: 'https://chat.whatsapp.com/GMl9ZCZ7IAhhd4s00oEGvYwR?mode=ems_copy_t',
+          thumbnailUrl: 'https://chat.whatsapp.com/KAhwtBdTOYlFsbsU8rwo79',
           thumbnail: await (await fetch(global.iconorcanal)).buffer(),
           mediaType: 1,
           renderLargerThumbnail: false
