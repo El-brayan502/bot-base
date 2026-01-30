@@ -13,7 +13,7 @@ handler.all = async function (m, { conn }) {
     global.iconorcanal = 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/e97fef-1769474597244.jpg'
 
     global.idcanal = '120363315369913363@newsletter' 
-    global.nombrecanal = '🍀 NAGI SEIISHIRO UPDATES 🍀'
+    global.nombrecanal = '☘️ Nagi Seiishiro'
 
     // --- 🎯 CONFIGURACIÓN DE CANAL (ADAPTADO) ---
     global.rcanal = {
