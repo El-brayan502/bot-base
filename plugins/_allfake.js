@@ -24,7 +24,6 @@ handler.all = async function (m, { conn }) {
         },
         externalAdReply: {
           title: '🎯 Nagi Updates',
-          body: 'Desarrollo & Actualizaciones',
           thumbnailUrl: iconorcanal,
           mediaType: 1,
           renderLargerThumbnail: false
