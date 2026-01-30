@@ -9,7 +9,7 @@ handler.all = async function (m, { conn }) {
     global.logo = 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/e97fef-1769474597244.jpg' 
     global.iconorcanal = 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/e97fef-1769474597244.jpg'
 
-    global.idcanal = '120363315369913363@newsletter' 
+    global.idcanal = '120363417186717632@newsletter' 
     global.nombrecanal = '☘️ Nagi Seiishiro'
 
     global.rcanal = {
