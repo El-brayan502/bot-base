@@ -47,7 +47,7 @@ let handler = async (m, { conn, usedPrefix }) => {
       `.trim()
     },
     {
-      image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/fb46db-1769467887638.jpg',
+      image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/6e4758-1769744630024.jpg',
       title: 'MENU GRUPO',
       code: 'MENU-GROUP',
       text: `
@@ -60,9 +60,9 @@ let handler = async (m, { conn, usedPrefix }) => {
       `.trim()
     },
     {
-      image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/fb46db-1769467887638.jpg',
-      title: 'MENU GRUPO',
-      code: 'MENU-GROUP',
+      image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/b40765-1769744363965.jpg',
+      title: 'MENU DOWNLOADER',
+      code: 'MENU-DOW',
       text: `
 ╭──〔 🛎 MENU DOWNLOADER 〕
 │
