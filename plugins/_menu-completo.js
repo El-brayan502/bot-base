@@ -20,7 +20,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 
   const menus = [
     {
-      image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/e1f0c2-1769465565901.jpg',
+      image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/656050-1769744293719.jpg',
       title: 'MENU OWNER',
       code: 'MENU-OWNER',
       text: `
