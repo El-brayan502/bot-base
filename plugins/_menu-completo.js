@@ -27,8 +27,6 @@ let handler = async (m, { conn, usedPrefix }) => {
 ╭──〔 👑 MENU OWNER 〕
 │
 │ ${usedPrefix}update
-│ ${usedPrefix}restart
-│ ${usedPrefix}cleartmp
 │ ${usedPrefix}detectar
 │
 ╰──────────────
