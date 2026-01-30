@@ -38,11 +38,10 @@ let handler = async (m, { conn, usedPrefix }) => {
       title: 'MENU DOWNLOADER',
       code: 'MENU-DOWN',
       text: `
-╭──〔 ⬇️ MENU DOWNLOADER 〕
+╭──〔 🎯 MENU MAKER 〕
 │
-│ ${usedPrefix}tiktok
-│ ${usedPrefix}play
-│ ${usedPrefix}ytmp3
+│ ${usedPrefix}s
+│ ${usedPrefix}sticker
 │
 ╰──────────────
       `.trim()
