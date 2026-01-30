@@ -14,7 +14,7 @@ handler.all = async function (m, { conn }) {
 
     global.rcanal = {
       contextInfo: {
-        isForwarded: false,
+        isForwarded: true,
         forwardedNewsletterMessageInfo: { newsletterJid: idcanal, serverMessageId: 100, newsletterName: nombrecanal },
         externalAdReply: {
           title: '🎯 Nagi Updates',
