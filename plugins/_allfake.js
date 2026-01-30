@@ -22,7 +22,7 @@ handler.all = async function (m, { conn }) {
         forwardedNewsletterMessageInfo: { newsletterJid: idcanal, serverMessageId: 100, newsletterName: nombrecanal },
         externalAdReply: {
           title: '🎯 Nagi Updates',
-          thumbnailUrl: iconorcanal,
+          thumbnail: await (await fetch(global.iconorcanal)).buffer(),
           mediaType: 1,
           renderLargerThumbnail: false
         }
