@@ -5,7 +5,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     if (!text)
       return conn.reply(
         m.chat,
-        `❌ *Falta el enlace*\n\nEjemplo:\n${usedPrefix + command} https://www.facebook.com/...`,
+        `*☘️ Envíe un enlace de ${usedPrefix + command}, para hacer la descarga*`,
         m,
         rcanal
       )
