@@ -1,132 +1,68 @@
-import axios from 'axios'
-const { generateWAMessageContent, generateWAMessageFromContent, proto } =
-  (await import('@whiskeysockets/baileys')).default
-
 let handler = async (m, { conn, usedPrefix }) => {
 
-  await conn.sendMessage(
-    m.chat,
-    { text: '*`CARGANDO MENÚ POR CATEGORÍAS...`*' },
-    { quoted: m }
-  )
+  const who = m.sender
+  const taguser = `@${who.split('@')[0]}`
+  const botname = 'Nagi Bot'
 
-  async function createImage(url) {
-    const { imageMessage } = await generateWAMessageContent(
-      { image: { url } },
-      { upload: conn.waUploadToServer }
-    )
-    return imageMessage
-  }
+  const file = 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/0af99e-1770105309161.jpg'
 
-  const menus = [
-    {
-      image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/656050-1769744293719.jpg',
-      title: 'MENU OWNER',
-      code: 'MENU-OWNER',
-      text: `
-╭──〔 👑 MENU OWNER 〕
-│
-│ ${usedPrefix}update
-│ ${usedPrefix}cleartmp
-│ ${usedPrefix}detectar
-│
-╰──────────────
-      `.trim()
+  const productMessage = {
+    product: {
+      productImage: { url: file },
+      productId: '24529689176623820',
+      title: `Nagi Bot`,
+      description: '',
+      currencyCode: 'USD',
+      priceAmount1000: '0',
+      retailerId: 1677,
+      url: 'https://wa.me/0',
+      productImageCount: 1
     },
-    {
-      image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/143190-1769744489959.jpg',
-      title: 'MENU MAKER',
-      code: 'MENU-MKR',
-      text: `
-╭──〔 🎯 MENU MAKER 〕
-│
-│ ${usedPrefix}s
-│ ${usedPrefix}sticker
-│
-╰──────────────
-      `.trim()
-    },
-    {
-      image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/6e4758-1769744630024.jpg',
-      title: 'MENU GRUPO',
-      code: 'MENU-GROUP',
-      text: `
-╭──〔 ☃️ MENU GRUPO 〕
-│
-│ ${usedPrefix}kick
-│ ${usedPrefix}link
-│
-╰──────────────
-      `.trim()
-    },
-    {
-      image: 'https://raw.githubusercontent.com/El-brayan502/img/upload/uploads/b40765-1769744363965.jpg',
-      title: 'MENU DOWNLOADER',
-      code: 'MENU-DOW',
-      text: `
-╭──〔 🛎 MENU DOWNLOADER 〕
-│
-│ ${usedPrefix}ig
-│ ${usedPrefix}instragram 
-│
-╰──────────────
-      `.trim()
-    }
-  ]
 
-  let cards = []
+    businessOwnerJid: who || '0@s.whatsapp.net',
 
-  for (let menu of menus) {
-    const imageMsg = await createImage(menu.image)
+    caption: `
+👤 Usuario: ${taguser}
 
-    cards.push({
-      header: proto.Message.InteractiveMessage.Header.fromObject({
-        hasMediaAttachment: true,
-        imageMessage: imageMsg
-      }),
-      body: proto.Message.InteractiveMessage.Body.fromObject({
-        text: menu.text
-      }),
-      footer: proto.Message.InteractiveMessage.Footer.fromObject({
-        text: '© Nagi Bot MD'
-      }),
-      nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({
-        buttons: [],
-        messageParamsJson: JSON.stringify({
-          limited_time_offer: {
-            text: `📂 ${menu.title}`,
-            url: 'https://github.com/El-brayan502',
-            copy_code: menu.code,
-            expiration_time: 1754613436864329
-          }
+*+ MENU DOWNLOADER*
+> #ig
+> #insagram 
+
+*+ MENU OWNER*
+> #ig
+> #update 
+> #cleartmp 
+> #detectar
+
+*+ MENU MAKER*
+> #s
+> #sticker
+
+*+ MENU GRUPO*
+> #kick
+> #link
+`.trim(),
+
+    title: '',
+    subtitle: '',
+    footer: `© ${botname} · Catálogo`,
+
+    // 🔘 BOTÓN INTERACTIVO (CANAL)
+    interactiveButtons: [
+      {
+        name: 'cta_url',
+        buttonParamsJson: JSON.stringify({
+          display_text: 'channel',
+          url: 'https://whatsapp.com/channel/0029Vb6BDQc0lwgsDN1GJ31i'
         })
-      })
-    })
+      }
+    ],
+
+    mentions: [who]
   }
 
-  const msg = generateWAMessageFromContent(
-    m.chat,
-    {
-      viewOnceMessage: {
-        message: {
-          interactiveMessage: proto.Message.InteractiveMessage.fromObject({
-            body: proto.Message.InteractiveMessage.Body.fromObject({
-              text: '*MENU COMPLETO ✨️*'
-            }),
-            carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({
-              cards
-            })
-          })
-        }
-      }
-    },
-    { quoted: m }
-  )
-
-  await conn.relayMessage(m.chat, msg.message, {
-    messageId: msg.key.id
-  })
+  await conn.sendMessage(m.chat, productMessage)
 }
 
-handler.command = ['menu', 'allmenu', 'help']
+handler.command = ['menucat']
 export default handler
