@@ -27,9 +27,10 @@ let handler = async (m, { conn, usedPrefix }) => {
 *+ MENU DOWNLOADER*
 > ${usedPrefix}ig
 > ${usedPrefix}instagram 
+> ${usedPrefix}fb
+> ${usedPrefix}facebook 
 
 *+ MENU OWNER*
-> ${usedPrefix}ig
 > ${usedPrefix}update 
 > ${usedPrefix}cleartmp 
 > ${usedPrefix}detectar
