@@ -46,8 +46,6 @@ let handler = async (m, { conn, usedPrefix }) => {
     title: '',
     subtitle: '',
     footer: `© ${botname} · Catálogo`,
-
-    // 🔘 BOTÓN INTERACTIVO (CANAL)
     interactiveButtons: [
       {
         name: 'cta_url',
