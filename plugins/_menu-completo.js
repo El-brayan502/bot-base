@@ -64,5 +64,6 @@ let handler = async (m, { conn, usedPrefix }) => {
 
   await conn.sendMessage(m.chat, productMessage)
 
+
 handler.command = ['menu', 'allmenu', 'help']
 export default handler
