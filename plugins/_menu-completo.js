@@ -25,27 +25,28 @@ let handler = async (m, { conn, usedPrefix }) => {
 👤 Usuario: ${taguser}
 
 *+ MENU DOWNLOADER*
-> #ig
-> #insagram 
+> ${usedPrefix}ig
+> ${usedPrefix}instagram 
 
 *+ MENU OWNER*
-> #ig
-> #update 
-> #cleartmp 
-> #detectar
+> ${usedPrefix}ig
+> ${usedPrefix}update 
+> ${usedPrefix}cleartmp 
+> ${usedPrefix}detectar
 
 *+ MENU MAKER*
-> #s
-> #sticker
+> ${usedPrefix}s
+> ${usedPrefix}sticker
 
 *+ MENU GRUPO*
-> #kick
-> #link
+> ${usedPrefix}kick
+> ${usedPrefix}link
 `.trim(),
 
     title: '',
     subtitle: '',
     footer: `© ${botname} · menu`,
+
     interactiveButtons: [
       {
         name: 'cta_url',
