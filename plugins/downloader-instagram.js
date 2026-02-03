@@ -1,49 +1,86 @@
-import fetch from 'node-fetch'
+import axios from 'axios'
+import cheerio from 'cheerio'
+import qs from 'qs'
 
-let handler = async (m, { conn, args }) => {
+async function instagramScraper(url) {
+  const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
+
+  const data = qs.stringify({ url, lang: 'en' })
+
   try {
-    if (!args[0]) {
-      return m.reply(
-        '❌ *Falta el enlace de Instagram*\n\n' +
-        '📌 Ejemplo:\n' +
-        '.ig https://www.instagram.com/reel/xxxx/'
-      )
-    }
+    const res = await axios.post('https://api.instasave.website/media', data, { headers, timeout: 15000 })
 
-    const igUrl = encodeURIComponent(args[0])
-    const apiUrl = `https://neji-api.vercel.app/api/downloader/instagram?url=${igUrl}`
+    const html = (res.data.match(/innerHTML\s*=\s*"(.+?)";/s)?.[1] || '').replace(/\\"/g, '"')
+    const $ = cheerio.load(html)
 
-    m.reply('⏳ Descargando video de Instagram...')
+    const result = []
 
-    const res = await fetch(apiUrl)
-    const json = await res.json()
+    $('.download-items').each((_, el) => {
+      const downloadUrl = $(el).find('a[title="Download"]').attr('href')
+      const isVideo = $(el).find('.format-icon i').attr('class')?.includes('ivideo')
+      if (downloadUrl) result.push({ type: isVideo ? 'video' : 'image', url: downloadUrl })
+    })
 
-    if (!json.status || !json.results || !json.results.length) {
-      return m.reply('❌ No se pudo descargar el contenido.')
-    }
+    if (!result.length) throw new Error('No se encontró contenido')
+    return result
 
-    const result = json.results[0]
-
-    if (result.type === 'video') {
-      await conn.sendMessage(
-        m.chat,
-        {
-          video: { url: result.url },
-          caption: '✅ *Video descargado con éxito*\n\nPowered by Neji API'
-        },
-        { quoted: m }
-      )
-    } else {
-      m.reply('⚠️ El contenido no es un video.')
-    }
   } catch (e) {
-    console.error(e)
-    m.reply('❌ Error al descargar el video.')
+    throw new Error(e.response?.data || e.message)
   }
 }
 
-handler.help = ['ig <url>']
+let handler = async (m, { conn, text }) => {
+
+  if (!text) {
+    await m.react('❌️')
+    return conn.reply(m.chat, '*📍 Envia un link primero*', m, rcanal)
+  }
+
+  if (!/instagram\.com/.test(text))
+    return conn.reply(m.chat, '*🚫 El enlace no es válido*', m, rcanal)
+
+  await m.react('🕒')
+
+  try {
+    const medias = await instagramScraper(text)
+
+    for (const media of medias) {
+
+      const res = await axios.get(media.url, {
+        responseType: 'arraybuffer',
+        timeout: 30000,
+        headers: { 'User-Agent': 'Mozilla/5.0' }
+      })
+
+      const buffer = Buffer.from(res.data)
+
+      if (media.type === 'video') {
+        await conn.sendMessage(
+          m.chat,
+          { video: buffer, caption: '🎬 *Video descargado*' },
+          { quoted: m }
+        )
+      } else {
+        await conn.sendMessage(
+          m.chat,
+          { image: buffer, caption: '🖼️ *Imagen descargada*' },
+          { quoted: m }
+        )
+      }
+    }
+
+    await m.react('✅')
+
+  } catch (e) {
+    console.error('IG ERROR:', e.message)
+    await m.react('❌')
+    conn.reply(m.chat, '❌ Error al obtener el contenido de Instagram.', m, rcanal)
+  }
+}
+
+handler.help = ['instagram <url>', 'ig', 'igdl']
 handler.tags = ['downloader']
-handler.command = ['ig', 'instagram', 'igdl']
+handler.command = ['instagram', 'ig', 'igdl']
+handler.register = true
 
 export default handler
