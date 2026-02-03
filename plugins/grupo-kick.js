@@ -9,11 +9,9 @@ let handler = async (m, { conn, usedPrefix, command, participants, isAdmin, isBo
   if (!isAdmin && !m.key.fromMe) return m.reply('🔱 ᴇsᴛᴇ ᴄᴏᴍᴀɴᴅᴏ ᴇs sᴏʟᴏ ᴘᴀʀᴀ ᴀᴅᴍɪɴɪsᴛʀᴀᴅᴏʀᴇs.\n> ɴᴀɢɪ ʙᴏᴛ 🔱')
   if (!isBotAdmin) return m.reply('🔱 ɴᴇᴄᴇsɪᴛᴏ sᴇʀ ᴀᴅᴍɪɴ ᴘᴀʀᴀ ʜᴀᴄᴇʀ ᴇsᴏ.\n> ������� ʙᴏᴛ 🔱')
 
-  // Usuario objetivo por mención o respuesta
   let target = (m.mentionedJid && m.mentionedJid[0]) || (m.quoted?.sender) || null
   if (!target) return m.reply('⚜️ ᴅᴇʙᴇs ᴍᴇɴᴄɪᴏɴᴀʀ ᴜɴ ᴜsᴜᴀʀɪᴏ ᴏ ʀᴇsᴘᴏɴᴅᴇʀ ᴀ ᴜɴ ᴍᴇɴsᴀᴊᴇ.\n> ɴᴀɢɪ ʙᴏᴛ 🔱')
 
-  // No permitir kick al bot ni a admins ni al dueño
   const groupMetadata = await conn.groupMetadata(m.chat)
   const participantsData = groupMetadata.participants || []
   const botId = conn.user?.id || conn.user?.jid || ''
@@ -28,7 +26,7 @@ let handler = async (m, { conn, usedPrefix, command, participants, isAdmin, isBo
   }
 
   try {
-    // El handler global ya parchea groupParticipantsUpdate (normaliza y hace no-op si ya no está)
+    
     await conn.groupParticipantsUpdate(m.chat, [toUserJid(target)], 'remove')
   await conn.reply(m.chat, `✅ ᴜsᴜᴀʀɪᴏ @${targetNum} ᴇxᴘᴜʟsᴀᴅᴏ.\n> ɴᴀɢɪ ʙᴏᴛ 🔱`, m, { mentions: [toUserJid(target)] })
   } catch (e) {
